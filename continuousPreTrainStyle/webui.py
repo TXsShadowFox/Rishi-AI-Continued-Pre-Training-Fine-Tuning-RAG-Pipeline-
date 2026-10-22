@@ -1,5 +1,5 @@
 """
-VedaGPT Local Web UI with RAG
+RishiAI Local Web UI with RAG
 ==============================
 
 Runs a local web server that:
@@ -60,7 +60,7 @@ collection = None
 in_memory_docs = None
 
 # ── RAG System Prompt ────────────────────────────────────────────────────────
-SYSTEM_PROMPT = """You are VedaGPT, an expert scholar of the ancient Indian Vedas (Rig Veda, Sama Veda, Yajur Veda, Atharva Veda), Charaka Samhita, Sushruta Samhita, Rasa Jala Nidhi, and IRJAY.
+SYSTEM_PROMPT = """You are RishiAI, an expert scholar of the ancient Indian Vedas (Rig Veda, Sama Veda, Yajur Veda, Atharva Veda), Charaka Samhita, Sushruta Samhita, Rasa Jala Nidhi, and IRJAY.
 
 You will be given scripture passages retrieved from the Vedic texts along with the user's question.
 
@@ -281,7 +281,7 @@ Now follow the Chain of Thought reasoning process to answer this question."""
 # HTTP HANDLER
 # ═══════════════════════════════════════════════════════════════════════
 
-class VedaGPTHandler(SimpleHTTPRequestHandler):
+class RishiAIHandler(SimpleHTTPRequestHandler):
 
     def do_GET(self):
         if self.path == "/" or self.path == "/index.html":
@@ -427,7 +427,7 @@ RESET  = "\033[0m"
 if __name__ == "__main__":
     print(f"""
 {BOLD}{CYAN}╔════════════════════════════════════════════════════════════╗
-║    🙏  VedaGPT — Local Web Interface with RAG  🙏       ║
+║    🙏  RishiAI — Local Web Interface with RAG  🙏       ║
 ║    Model: shinigamiRaj/IndicVedas (via Modal)            ║
 ║    RAG: MongoDB Atlas + BGE + Cross-Encoder              ║
 ╚════════════════════════════════════════════════════════════╝{RESET}
@@ -472,11 +472,11 @@ if __name__ == "__main__":
     # ── 3. Look up deployed Modal function ──
     print(f"  {DIM}Looking up deployed Modal app...{RESET}")
     try:
-        VedaGPTCls = modal.Cls.from_name(
-            "vedagpt-vllm-inference",
-            "VedaGPTInference",
+        RishiAICls = modal.Cls.from_name(
+            "rishiai-vllm-inference",
+            "RishiAIInference",
         )
-        generate_fn = VedaGPTCls().generate
+        generate_fn = RishiAICls().generate
         print(f"  {GREEN}✅ Found deployed Modal function!{RESET}")
     except Exception as e:
         print(f"""
@@ -494,7 +494,7 @@ if __name__ == "__main__":
     warmup_thread.start()
 
     # ── 5. Start HTTP server ──
-    server = HTTPServer(("0.0.0.0", PORT), VedaGPTHandler)
+    server = HTTPServer(("0.0.0.0", PORT), RishiAIHandler)
     print(f"\n  {BOLD}{GREEN}🌐 Open in your browser:{RESET} {BOLD}http://localhost:{PORT}{RESET}")
     print(f"  {DIM}Press Ctrl+C to stop.{RESET}\n")
 

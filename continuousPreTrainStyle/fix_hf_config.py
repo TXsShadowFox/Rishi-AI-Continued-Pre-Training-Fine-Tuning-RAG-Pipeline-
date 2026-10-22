@@ -3,7 +3,7 @@ import json
 from huggingface_hub import hf_hub_download, HfApi
 from dotenv import load_dotenv
 
-load_dotenv("/Users/raj/PycharmProjects/VedaGPT/.env")
+load_dotenv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".env"))
 
 hf_token = os.getenv("HF_TOKEN")
 api = HfApi(token=hf_token)

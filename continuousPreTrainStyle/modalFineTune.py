@@ -22,7 +22,7 @@ os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
 import modal
 
-app = modal.App("vedagpt-unsloth-finetune")
+app = modal.App("rishiai-unsloth-finetune")
 
 # Persistent volumes for caching model weights and saving checkpoints
 model_cache_volume = modal.Volume.from_name("unsloth-model-cache", create_if_missing=True)
@@ -299,12 +299,12 @@ def run_inference_remote():
     # MODE 2: Q&A Chat
     chat_tokenizer = get_chat_template(tokenizer, chat_template='chatml')
 
-    def ask_vedagpt(query, max_new_tokens=256):
+    def ask_rishiai(query, max_new_tokens=256):
         messages = [
             {
                 "role": "system",
                 "content": (
-                    "You are VedaGPT, an expert scholar of the ancient Vedic scriptures like RigVeda, SamaVeda, YajurVeda, AtharvaVeda, Charaka Samhita, Sushruta Samhita, Rasa Jala Nidhi, IRJAY (International Research Journal of Ayurveda and Yoga)"
+                    "You are RishiAI, an expert scholar of the ancient Vedic scriptures like RigVeda, SamaVeda, YajurVeda, AtharvaVeda, Charaka Samhita, Sushruta Samhita, Rasa Jala Nidhi, IRJAY (International Research Journal of Ayurveda and Yoga)"
                            "Answer questions accurately based on your knowledge of the Vedas, Upanishads, Charaka Samhita, Sushruta Samhita, and other classical Indian texts."
                             "Maintain the style of writing as per the ancient Vedic texts where required."
                 ),
@@ -353,7 +353,7 @@ def run_inference_remote():
     ]
     for q in qa_queries:
         results.append(f"\nQ: {q}")
-        results.append(f"A: {ask_vedagpt(q)}")
+        results.append(f"A: {ask_rishiai(q)}")
 
     return "\n".join(results)
 

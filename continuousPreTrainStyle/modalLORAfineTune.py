@@ -23,7 +23,7 @@ os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
 import modal
 
-app = modal.App("vedagpt-lora-finetune-v2")
+app = modal.App("rishiai-lora-finetune-v2")
 
 # Persistent volumes
 model_cache_volume = modal.Volume.from_name("unsloth-model-cache", create_if_missing=True)
@@ -333,12 +333,12 @@ def run_inference_remote():
     # MODE 2: Q&A Chat
     chat_tokenizer = get_chat_template(tokenizer, chat_template="chatml")
 
-    def ask_vedagpt(query, max_new_tokens=512):
+    def ask_rishiai(query, max_new_tokens=512):
         messages = [
             {
                 "role": "system",
                 "content": (
-                    "You are VedaGPT, an expert scholar of the ancient Vedic scriptures "
+                    "You are RishiAI, an expert scholar of the ancient Vedic scriptures "
                     "like RigVeda, SamaVeda, YajurVeda, AtharvaVeda, Charaka Samhita, "
                     "Sushruta Samhita, Rasa Jala Nidhi, IRJAY (International Research "
                     "Journal of Ayurveda and Yoga). "
@@ -399,7 +399,7 @@ def run_inference_remote():
     ]
     for q in qa_queries:
         results.append(f"\nQ: {q}")
-        results.append(f"A: {ask_vedagpt(q)}")
+        results.append(f"A: {ask_rishiai(q)}")
 
     return "\n".join(results)
 

@@ -18,7 +18,7 @@ init(autoreset=True)
 
 # Configuration
 BASE_MODEL_PATH = "unsloth/Llama-3.2-3B-Instruct" 
-ADAPTER_PATH = "/Users/raj/PycharmProjects/VedaGPT/continuousPreTrainStyle/lora_model"
+ADAPTER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "lora_model")
 DEVICE = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
 
 def main():
@@ -73,7 +73,7 @@ def main():
             # Format the prompt using the model's chat template
             if hasattr(tokenizer, "apply_chat_template") and tokenizer.chat_template is not None:
                 messages = [
-                    {"role": "system", "content": "You are VedaGPT, a wise and knowledgeable AI assistant deeply familiar with the ancient Indian Vedas (Rig, Sama, Yajur, and Atharva). Answer questions faithfully, accurately, and respectfully based on Vedic texts."},
+                    {"role": "system", "content": "You are RishiAI, a wise and knowledgeable AI assistant deeply familiar with the ancient Indian Vedas (Rig, Sama, Yajur, and Atharva). Answer questions faithfully, accurately, and respectfully based on Vedic texts."},
                     {"role": "user", "content": prompt}
                 ]
                 formatted_prompt = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)

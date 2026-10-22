@@ -246,7 +246,7 @@ if __name__ == "__main__":
     parser.add_argument("--delay", type=float, default=2.0,
                         help="Delay between requests in seconds (default: 2)")
     parser.add_argument("--output", type=str,
-                        default="/Users/raj/PycharmProjects/VedaGPT/continuousPreTrainStyle/data/sushruta_samhita_pretrain.jsonl",
+                        default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "sushruta_samhita_pretrain.jsonl"),
                         help="Output JSONL file path")
     parser.add_argument("--limit", type=int, default=None,
                         help="Limit number of chapters to scrape per volume (for testing)")

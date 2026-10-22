@@ -118,6 +118,6 @@ Dataset records follow a unified JSON schema containing the text payload alongsi
 
 ## 🚀 Purpose & Applications
 
-*   **Ancient Text Pre-Training**: Ideal for injecting Vedic domain knowledge into deep learning models (e.g., VedaGPT).
+*   **Ancient Text Pre-Training**: Ideal for injecting Vedic domain knowledge into deep learning models (e.g., RishiAI).
 *   **Bilingual RAG (Retrieval-Augmented Generation)**: High-quality translations allow cross-lingual semantic searches between English, Hindi, and Sanskrit.
 *   **Linguistic & Digital Humanities**: Facilitates statistical studies of ancient Sanskrit syntax, meter, and translation structures.

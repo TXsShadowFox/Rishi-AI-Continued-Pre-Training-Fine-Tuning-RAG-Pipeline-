@@ -1,4 +1,4 @@
-VedaGPT RAG Evaluation Summary
+RishiAI RAG Evaluation Summary
 ==================================================
 
 Evaluator LLM: gemma3:4b-it-qat

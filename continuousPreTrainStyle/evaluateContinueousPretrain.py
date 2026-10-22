@@ -15,7 +15,7 @@ init(autoreset=True)
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Configuration
-BASE_MODEL_PATH = "/Users/raj/PycharmProjects/VedaGPT/base_model_local"
+BASE_MODEL_PATH = os.path.join(SCRIPT_DIR, "..", "base_model_local")
 ADAPTER_PATH = os.path.join(SCRIPT_DIR, "outputs", "final_model")
 TEST_FILE = os.path.join(SCRIPT_DIR, "data", "test_split.jsonl")
 DEVICE = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")

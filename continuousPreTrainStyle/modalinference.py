@@ -1,5 +1,5 @@
 """
-VedaGPT Interactive Inference on Modal (vLLM-powered)
+RishiAI Interactive Inference on Modal (vLLM-powered)
 =====================================================
 
 Uses vLLM for blazing-fast inference instead of Unsloth (which is
@@ -31,7 +31,7 @@ os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 
 import modal
 
-app = modal.App("vedagpt-vllm-inference")
+app = modal.App("rishiai-vllm-inference")
 
 # Persistent volumes (same as training script)
 model_cache_volume = modal.Volume.from_name("unsloth-model-cache", create_if_missing=True)
@@ -71,7 +71,7 @@ inference_image = (
     },
     secrets=[modal.Secret.from_dotenv()],
 )
-class VedaGPTInference:
+class RishiAIInference:
 
     @modal.enter()
     def load_model(self):
@@ -120,7 +120,7 @@ class VedaGPTInference:
                 {
                     "role": "system",
                     "content": (
-                    "You are VedaGPT, an expert scholar of the ancient Vedic scriptures like RigVeda, SamaVeda, YajurVeda, AtharvaVeda, Charaka Samhita, Sushruta Samhita, Rasa Jala Nidhi, IRJAY (International Research Journal of Ayurveda and Yoga)"
+                    "You are RishiAI, an expert scholar of the ancient Vedic scriptures like RigVeda, SamaVeda, YajurVeda, AtharvaVeda, Charaka Samhita, Sushruta Samhita, Rasa Jala Nidhi, IRJAY (International Research Journal of Ayurveda and Yoga)"
                            "Answer questions accurately based on your knowledge of the Vedas, Upanishads, Charaka Samhita, Sushruta Samhita, and other classical Indian texts."
                             "Maintain the style of writing as per the ancient Vedic texts where required."
                 ),
@@ -155,7 +155,7 @@ RESET  = "\033[0m"
 def print_banner():
     print(f"""
 {BOLD}{CYAN}╔════════════════════════════════════════════════════════════╗
-║          🙏  VedaGPT — Modal vLLM Inference  🙏          ║
+║          🙏  RishiAI — Modal vLLM Inference  🙏          ║
 ╚════════════════════════════════════════════════════════════╝{RESET}
 """)
 
@@ -164,7 +164,7 @@ def print_separator():
     print(f"{DIM}{CYAN}────────────────────────────────────────────────────────────{RESET}")
 
 
-def run_interactive(inference: VedaGPTInference, mode: str):
+def run_interactive(inference: RishiAIInference, mode: str):
     """Interactive chat loop with clear prompts."""
     print(f"  {BOLD}Interactive Session{RESET}")
     print(f"  Type your question and press Enter.")
@@ -197,7 +197,7 @@ def run_interactive(inference: VedaGPTInference, mode: str):
             response = inference.generate.remote(user_input, mode=mode)
             elapsed = time.time() - t0
 
-            print(f"\n  {BOLD}{GREEN}VedaGPT ▸{RESET}")
+            print(f"\n  {BOLD}{GREEN}RishiAI ▸{RESET}")
             # Indent each line of the response for readability
             for line in response.split("\n"):
                 print(f"  {line}")
@@ -211,7 +211,7 @@ def run_interactive(inference: VedaGPTInference, mode: str):
             print(f"\n  {RED}❌ Error: {e}{RESET}\n")
 
 
-def run_single_prompt(inference: VedaGPTInference, prompt: str, mode: str):
+def run_single_prompt(inference: RishiAIInference, prompt: str, mode: str):
     """Run a single prompt and print the result."""
     print(f"  {BOLD}Single Prompt Mode{RESET}\n")
     print(f"  {BOLD}{YELLOW}You ▸{RESET} {prompt}\n")
@@ -219,14 +219,14 @@ def run_single_prompt(inference: VedaGPTInference, prompt: str, mode: str):
     t0 = time.time()
     response = inference.generate.remote(prompt, mode=mode)
     elapsed = time.time() - t0
-    print(f"\n  {BOLD}{GREEN}VedaGPT ▸{RESET}")
+    print(f"\n  {BOLD}{GREEN}RishiAI ▸{RESET}")
     for line in response.split("\n"):
         print(f"  {line}")
     print(f"\n  {DIM}({elapsed:.1f}s){RESET}")
     print_separator()
 
 
-def run_test_suite(inference: VedaGPTInference, mode: str):
+def run_test_suite(inference: RishiAIInference, mode: str):
     """Run a predefined suite of test questions."""
     test_questions = [
         # Knowledge breadth
@@ -276,7 +276,7 @@ def main(
     mode: str = "chat",
 ):
     """
-    VedaGPT inference powered by vLLM on Modal.
+    RishiAI inference powered by vLLM on Modal.
 
     Args:
         prompt:      A single question/prompt to send.
@@ -286,7 +286,7 @@ def main(
     """
     print_banner()
 
-    inference = VedaGPTInference()
+    inference = RishiAIInference()
 
     if prompt:
         run_single_prompt(inference, prompt, mode)

@@ -1,4 +1,4 @@
-# VedaGPT: Continued Pre-Training, Fine-Tuning & RAG Pipeline 🪶
+# RishiAI: Continued Pre-Training, Fine-Tuning & RAG Pipeline 🪶
 
 A premium data curation, model fine-tuning, deployment, and Retrieval-Augmented Generation (RAG) evaluation pipeline for ancient Indian Vedic literature (Sanskrit, Hindi, and English), starting with the four primary Vedas: **Rig Veda**, **Sama Veda**, **Yajur Veda**, and **Atharva Veda**, as well as Ayurvedic texts like **Charaka Samhita** and **Sushruta Samhita**.
 

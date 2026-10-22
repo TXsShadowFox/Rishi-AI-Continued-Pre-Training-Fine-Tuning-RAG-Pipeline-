@@ -18,7 +18,7 @@ if not MONGODB_URI or "xxxxx" in MONGODB_URI:
 
 # ── Configuration ──
 BASE_MODEL_PATH = "unsloth/Llama-3.2-3B-Instruct" 
-ADAPTER_PATH = "/Users/raj/PycharmProjects/VedaGPT/continuousPreTrainStyle/lora_model"
+ADAPTER_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "continuousPreTrainStyle", "lora_model")
 DEVICE = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
 DB_NAME = "vedic_rag"
 COLLECTION_NAME = "scriptures"
@@ -35,7 +35,7 @@ INITIAL_CANDIDATES = 150   # broad vector search pool
 VECTOR_TOP_K = 15          # retrieve top 15 from vector search
 RERANK_TOP_K = 9           # keep top 5 after re-ranking
 
-print(f"🚀 {Fore.LIGHTCYAN_EX}Starting VedaGPT Enhanced RAG on {DEVICE.upper()}...{Fore.RESET}")
+print(f"🚀 {Fore.LIGHTCYAN_EX}Starting RishiAI Enhanced RAG on {DEVICE.upper()}...{Fore.RESET}")
 
 # ── 1. Connect to MongoDB Atlas ──
 print(f"🔌 Connecting to MongoDB Atlas...")
@@ -144,7 +144,7 @@ def retrieve_and_rerank(query, vector_top_k=VECTOR_TOP_K, rerank_top_k=RERANK_TO
 # CHAIN OF THOUGHT SYSTEM PROMPT
 # ════════════════════════════════════════════════════
 
-SYSTEM_PROMPT = """You are VedaGPT, an expert scholar of the ancient Indian Vedas (Rig Veda, Sama Veda, Yajur Veda, and Atharva Veda).
+SYSTEM_PROMPT = """You are RishiAI, an expert scholar of the ancient Indian Vedas (Rig Veda, Sama Veda, Yajur Veda, and Atharva Veda).
 
 You will be given scripture passages retrieved from the Vedic texts along with the user's question.
 
@@ -255,7 +255,7 @@ Now follow the Chain of Thought reasoning process to answer this question."""
         generated_ids = outputs[0][inputs.input_ids.shape[1]:]
         response = tokenizer.decode(generated_ids, skip_special_tokens=True)
         
-        print(f"{Fore.LIGHTBLUE_EX}VedaGPT:{Fore.RESET}")
+        print(f"{Fore.LIGHTBLUE_EX}RishiAI:{Fore.RESET}")
         print(response.strip())
         print(f"\n{'═' * 70}\n")
         

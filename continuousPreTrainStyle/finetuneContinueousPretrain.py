@@ -15,7 +15,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 # ==========================================
 # Configuration and Constants
 # ==========================================
-base_model_local = "/Users/raj/PycharmProjects/VedaGPT/base_model_local"
+base_model_local = os.path.join(SCRIPT_DIR, "..", "base_model_local")
 base_model_hf = "dheeyantra/dhee-nxtgen-qwen3-indic"
 train_file = os.path.join(SCRIPT_DIR, "data", "train_split.jsonl")
 val_file = os.path.join(SCRIPT_DIR, "data", "val_split.jsonl")

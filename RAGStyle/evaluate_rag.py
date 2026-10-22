@@ -1,5 +1,5 @@
 """
-VedaGPT RAG Evaluation using RAGAS
+RishiAI RAG Evaluation using RAGAS
 ===================================
 Evaluates the RAG pipeline on a curated Vedic knowledge test set using:
   - Context Precision   → Are the retrieved passages relevant?
@@ -54,7 +54,7 @@ SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 EVAL_DATASET_PATH = os.path.join(SCRIPT_DIR, "eval_dataset.json")
 
 BASE_MODEL_PATH = "unsloth/Llama-3.2-3B-Instruct"
-ADAPTER_PATH = "/Users/raj/PycharmProjects/VedaGPT/continuousPreTrainStyle/lora_model"
+ADAPTER_PATH = os.path.join(SCRIPT_DIR, "..", "continuousPreTrainStyle", "lora_model")
 DEVICE = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
 DB_NAME = "vedic_rag"
 COLLECTION_NAME = "scriptures"
@@ -75,7 +75,7 @@ OLLAMA_BASE_URL = "http://127.0.0.1:11434"
 # LOAD MODELS
 # ═══════════════════════════════════════════════════════
 
-print(f"🚀 {Fore.LIGHTCYAN_EX}VedaGPT RAG Evaluation Suite{Fore.RESET}")
+print(f"🚀 {Fore.LIGHTCYAN_EX}RishiAI RAG Evaluation Suite{Fore.RESET}")
 print(f"{'═' * 60}")
 
 # MongoDB
@@ -117,7 +117,7 @@ print(f"{Fore.LIGHTGREEN_EX}✅ All models loaded.{Fore.RESET}\n")
 # RETRIEVAL PIPELINE (reused from rag_inference.py)
 # ═══════════════════════════════════════════════════════
 
-SYSTEM_PROMPT = """You are VedaGPT, an expert scholar of the ancient Indian Vedas (Rig Veda, Sama Veda, Yajur Veda, and Atharva Veda).
+SYSTEM_PROMPT = """You are RishiAI, an expert scholar of the ancient Indian Vedas (Rig Veda, Sama Veda, Yajur Veda, and Atharva Veda).
 
 You will be given scripture passages retrieved from the Vedic texts along with the user's question.
 
@@ -321,7 +321,7 @@ def main():
 
     # 6. Print results
     print(f"\n{'═' * 60}")
-    print(f"📈 {Fore.LIGHTGREEN_EX}VEDAGPT RAG EVALUATION REPORT{Fore.RESET}")
+    print(f"📈 {Fore.LIGHTGREEN_EX}RISHIAI RAG EVALUATION REPORT{Fore.RESET}")
     print(f"{'═' * 60}")
     print(f"{'Metric':<25} | {'Score':<10}")
     print(f"{'-' * 40}")
@@ -341,7 +341,7 @@ def main():
     # 8. Also save a human-readable summary
     summary_path = os.path.join(SCRIPT_DIR, "eval_summary.txt")
     with open(summary_path, "w") as f:
-        f.write("VedaGPT RAG Evaluation Summary\n")
+        f.write("RishiAI RAG Evaluation Summary\n")
         f.write("=" * 50 + "\n\n")
         f.write(f"Evaluator LLM: {OLLAMA_MODEL}\n")
         f.write(f"Embedding Model: {EMBEDDING_MODEL}\n")

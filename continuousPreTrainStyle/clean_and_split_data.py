@@ -129,7 +129,7 @@ def write_jsonl(filepath, entries):
 
 def main():
     print("=" * 70)
-    print("VedaGPT Data Cleaning & Splitting Pipeline")
+    print("RishiAI Data Cleaning & Splitting Pipeline")
     print("=" * 70)
     
     # ── Load ───────────────────────────────────────────────────────────────

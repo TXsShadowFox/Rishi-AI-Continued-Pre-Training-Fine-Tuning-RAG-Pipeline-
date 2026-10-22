@@ -69,4 +69,4 @@ python3 continuousPreTrainStyle/inference.py
 *   **Ayurvedic Texts**: Hierarchical chunking retaining Sloka and Chapter context.
 *   **PDF Pipeline**: For printed manuscripts, parses text page-by-page, chunking each into overlapping parts (150-character overlap) to preserve translation pairs without context clipping.
 
-For specific dataset parameters, schemas, and licence details, see [data/README.md](file:///Users/raj/PycharmProjects/VedaGPT/continuousPreTrainStyle/data/README.md).
+For specific dataset parameters, schemas, and licence details, see [data/README.md](data/README.md).
